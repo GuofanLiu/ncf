@@ -56,7 +56,8 @@ class SampleGenerator(object):
         return ratings
     
     def _binarize(self, ratings):
-        """binarize into 0 or 1, imlicit feedback"""
+        """binarize into 0 or 1, implicit feedback"""
+        # 为了模拟implicit feedback
         ratings = deepcopy(ratings)
         ratings['rating'][ratings['rating'] > 0] = 1.0
         return ratings

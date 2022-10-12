@@ -64,7 +64,9 @@ neumf_config = {'alias': 'pretrain_neumf_factor8neg4',
                 }
 
 # Load Data
-ml1m_dir = 'data/ml-1m/ratings.dat'
+# ml1m_dir = 'data/ml-1m/ratings.dat'
+# 调试路径
+ml1m_dir = 'src/data/ml-1m/ratings.dat'
 ml1m_rating = pd.read_csv(ml1m_dir, sep='::', header=None, names=['uid', 'mid', 'rating', 'timestamp'],  engine='python')
 # Reindex
 user_id = ml1m_rating[['uid']].drop_duplicates().reindex()
