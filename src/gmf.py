@@ -19,6 +19,7 @@ class GMF(torch.nn.Module):
     def forward(self, user_indices, item_indices):
         user_embedding = self.embedding_user(user_indices)
         item_embedding = self.embedding_item(item_indices)
+        # torch.mul 矩阵点乘
         element_product = torch.mul(user_embedding, item_embedding)
         logits = self.affine_output(element_product)
         rating = self.logistic(logits)
@@ -34,5 +35,8 @@ class GMFEngine(Engine):
         self.model = GMF(config)
         if config['use_cuda'] is True:
             use_cuda(True, config['device_id'])
+            # 把模型移到gpu上
             self.model.cuda()
         super(GMFEngine, self).__init__(config)
+        
+        

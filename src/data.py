@@ -104,6 +104,7 @@ class SampleGenerator(object):
         for row in test_ratings.itertuples():
             test_users.append(int(row.userId))
             test_items.append(int(row.itemId))
+            # 循环100次 把所有negative item的pair都加到negative list中
             for i in range(len(row.negative_samples)):
                 negative_users.append(int(row.userId))
                 negative_items.append(int(row.negative_samples[i]))
